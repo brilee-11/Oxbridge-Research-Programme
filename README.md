@@ -7,7 +7,6 @@ The goal is to write a little Python package of file compression, providing two 
 The user will provide a local text file that they want to compress/uncompress. 
 We could even store the compressed files in a SQLite database, in a more advanced version (to get some training with databases). 
 
-## Huffman coding
 
 ## Sorting algorithms
 
@@ -16,6 +15,15 @@ We could even store the compressed files in a SQLite database, in a more advance
 ### Merge Sort
 
 ### Comparison
+
+
+## Huffman coding
+
+### Useful data stuctures
+
+#### Dictionaries
+
+#### Binary heaps
 
 ## I/O in Python
 
