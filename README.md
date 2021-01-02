@@ -18,6 +18,8 @@ We could even store the compressed files in a SQLite database, in a more advance
 
 
 ## Huffman coding
+##### *** AIM : ***
+The aim is to be able to take a string provided by the user and compress the provided string. 
 ##### *** Steps on how to do it (in English): ***
 1. Take the string provided by the user and treat it as an input value. 
 2. Calculate the frequency of each character in the string.
