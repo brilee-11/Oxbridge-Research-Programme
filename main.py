@@ -125,7 +125,9 @@ print(str(dictionary))
 
 sorted_list = sorted(dictionary) 
 print(str(sorted_list))
-# this is sorted from most frequent to least frequent
+
+
+
 
 
 
