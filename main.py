@@ -1,27 +1,4 @@
-# STEPS :
-'''
- Replace each character (for example 'M', 't', 'b', etc) by its Huffman encoding (ex: 'M' corresponds to "10")return "0110110"
- Idea: the more frequent a character is, the shorter its Huffman encoding, because it's going to appear more times") 
-
-
-* Useful notion: dictionaries
--> A dictionary is a data structure (a bit like a list or an array) where you can associate values to certain keys. For example, an array can be seen as dictionary, where the keys are always natural numbers: 
-
-my_array = ["value 1", "value 2"]
-
--> my_array[0] is "value 1", and my_array[1] is "value 2": 
--> ie. the key 0 is associated to the value "value 1" (written 0 ⟼ "value 1"), and the key 1 is associated to "value 2" (written 1 ⟼ "value 2")
-
--> BUT: in our case, we would like our keys to be the characters of our input_string, and not just integers. 
--> For example, we'd like to associate to the key "H" (the encoded character) the value "101" (the corresponding Huffman code): "H" ⟼ "101"
-
--> A dictionary is _exactly_ the data structure that enables us to do that! (In a way, it's a function, where the domain is finite: to each key, you associate a value, but you have a finite number of keys)
-
--> How to create a dictionary in Python? 
-
--> my_dict = {} # Empty dictionary: no keys, no values
-# and then you can add a new "key" ⟼ "value" pairing (a value can be anything, but a key can only _immutable_ (we'll talk about it next time: that is, something that has a certain value and can't be modified): for ex: a string, a number, a tuple, etc BUT NOT a list, an array, etc (because these can be modified)):
-
+# How to create a dict in python?
 # my_dict["key"] = "value" # adds the association "key" ⟼ "value" to the dictionary
 # my_dict[1] = "value" # 1 ⟼ "value" # adds the association 1 ⟼ "value" to the dictionary
 # my_dict["something"] = 4 # adds the association "something" ⟼ 4 to the dictionary
@@ -110,10 +87,10 @@ dictionary = {}
   # Close! len() only gives you the length of input_string, so you'd have len("aaabc") = 5, but it doesn't tell you how many times each character appears. 
   # So that's why I insist so much on the english version: it gives you the big picture (but each step is not necessarily easy to implement!), and _then_: you can try and solve each step by coding. But I do both at the same time, it's too overwhelming.
 
-'''
+
   
 from collections import OrderedDict
-
+# importing an ordered dictionary from the python library. 
 string = "computer science is the study of computers and computational systems"
 
 dictionary = {}
@@ -122,15 +99,22 @@ for i in set(string):
   dictionary[i] = string.count(i)
 
 list_frequencies = sorted([(i,string.count(i)) for i in set(string)], key=lambda couple: couple[1], reverse=True)
-# Anonymous function: A function which takes the second element of the function and sort it according to the second element. 
+# Anonymous function (lambda): A function which takes the second element of the function and sort it according to the second element. 
+# couple is the brackets list (character, frequency)
 print(list_frequencies)
 
 frequencies_dict = OrderedDict(list_frequencies)
 
+
+
 trees_dict = {}
 
 def merge_tuples(tuple1, tuple2):
+  x,y = tuple1, tuple2
+  tuple1, tuple2 = frequencies_dict.popitem(), frequencies_dict.popitem()
+  t_label, t_frequency = merge_tuples(x,y)
   return (tuple1[0]+tuple2[0], tuple1[1]+tuple2[1])
+
 
 def merge_trees(tree1, tree2):
   return None
@@ -143,7 +127,7 @@ def merge_trees(tree1, tree2):
 # Then, add (t_label, t_freq) frequencies_dict 
 # AND reorder the frequencies_dict
 
-
+'''my trial:
 for i in string:
   if i in dictionary:
     dictionary[i] += 1
@@ -154,15 +138,16 @@ for i in string:
 #print(dictionary["c"])
 
 sorted_list = sorted(dictionary, reverse=True)
-sorted_list[:3:2] # ⟶ element 0, 2, but not 3 
+#sorted_list[:3:2] # ⟶ element 0, 2, but not 3 
 #print(str(sorted_list))
-
+'''
 
 # Object Oriented Language
 L = []
 for i in range(5):
   if i%2 == 1:
     L.append(i**2)
+
 
 # Better (more pythonic) this way
 L = [i**2 for i in range(5) if i%2 ==1]
@@ -171,5 +156,150 @@ def count(string, char):
   return len([c for c in string if c==char])
 
 
-#print(count(string, "c"))
-#print(string.count("c"))
+frequencies_dict = OrderedDict(list_frequencies)
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+# popped off the last 2 elements and merged them together, and added them back to the list
+# NEXT STEP : Reorder the list AGAIN!!
+
+frequencies_dict = OrderedDict(sorted(frequencies_dict.items(), reverse = True, key=lambda t:t[1]))
+print(" ")
+print(frequencies_dict)
+# reordered list with the merged element
+# NEXT STEP : Pop off the last 2 element AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+#AGAIN
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+# The one above is the last one
+
+
+
