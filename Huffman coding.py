@@ -11,9 +11,10 @@ sorted_list = sorted(dictionary)
 print(str(sorted_list))
 # this is sorted from most frequent to least frequent
 
-#rubbish work 
+#thought process 
 sorted_list[0] = 1
 sorted_list[1] = 0
 sorted_list[2] = 11
 sorted_list[3] = 10
 
+# thought question : what happens when the entire tree is merged already?

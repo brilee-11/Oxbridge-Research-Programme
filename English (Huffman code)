@@ -4,7 +4,7 @@ Huffman coding :
 ~ Count (not manually) how many times each character are repeated in the string. Maybe using len? but of each      character.  
 ~ Sort the list from the character with the least frequency to the most frequency
 ~ Use the dictionary to assign each character to a special binary number. 
-~ Create a function so that the program repeats (don't need to write so much stuff). Maybe use a for loop? Is a loop needed? 
+~ Create a function so that the program repeats (don't need to write so much stuff).
 ~ Make it equal to a variable (output) 
 ~ Return the output, and I think print something? Then only the encoded string would be printed out? 
 

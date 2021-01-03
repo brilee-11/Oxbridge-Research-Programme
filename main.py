@@ -112,22 +112,64 @@ dictionary = {}
 
 '''
   
+from collections import OrderedDict
 
 string = "computer science is the study of computers and computational systems"
+
 dictionary = {}
 
-for i in string :
-  if i in dictionary :
+for i in set(string):
+  dictionary[i] = string.count(i)
+
+list_frequencies = sorted([(i,string.count(i)) for i in set(string)], key=lambda couple: couple[1], reverse=True)
+# Anonymous function: A function which takes the second element of the function and sort it according to the second element. 
+print(list_frequencies)
+
+frequencies_dict = OrderedDict(list_frequencies)
+
+trees_dict = {}
+
+def merge_tuples(tuple1, tuple2):
+  return (tuple1[0]+tuple2[0], tuple1[1]+tuple2[1])
+
+def merge_trees(tree1, tree2):
+  return None
+
+
+# t1, t2 = frequencies_dict.popitem(), frequencies_dict.popitem()
+# t_label, t_freq = merge_tuples(x, y)
+
+# Then, create the merged tree, and add it to the trees_dict
+# Then, add (t_label, t_freq) frequencies_dict 
+# AND reorder the frequencies_dict
+
+
+for i in string:
+  if i in dictionary:
     dictionary[i] += 1
-  else :
+  else:
     dictionary[i] = 1
-print(str(dictionary))
 
-sorted_list = sorted(dictionary) 
-print(str(sorted_list))
+#print(str(dictionary))
+#print(dictionary["c"])
+
+sorted_list = sorted(dictionary, reverse=True)
+sorted_list[:3:2] # ⟶ element 0, 2, but not 3 
+#print(str(sorted_list))
 
 
+# Object Oriented Language
+L = []
+for i in range(5):
+  if i%2 == 1:
+    L.append(i**2)
+
+# Better (more pythonic) this way
+L = [i**2 for i in range(5) if i%2 ==1]
+
+def count(string, char):
+  return len([c for c in string if c==char])
 
 
-
-
+#print(count(string, "c"))
+#print(string.count("c"))
