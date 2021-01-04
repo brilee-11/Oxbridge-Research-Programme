@@ -8,7 +8,7 @@
 # my_dict = {1: "value", "something": 4, "key": "value"} 
 
 
-
+'''
 input_string = "Hola ba ma"
 def huffman(input_string) :
   if "H" in input_string :
@@ -47,8 +47,9 @@ def huffman(input_string) :
       print(" ")
 
   return()
+'''
 
-
+'''
 def Huffman_coding(input_string):
   # apply the Huffman coding algorithm to input_string (with a dictionary, etc) and store the result in output_string
 
@@ -61,13 +62,10 @@ def Huffman_coding(input_string):
 
 dictionary = {}
 data = dictionary
+'''
 
 
 
-#trial :
-input_string = "Computer Science is the study of computers"
-
-dictionary = {}
 
 
   # This doesn't work for all possible input_strings unfortunately (for ex: if input_string = "abbbbbbbbbbb", then a won't be encoded by "1" because it's rare, so it's encoding will be a long string, and b will have a very short encoding) 
@@ -88,32 +86,6 @@ dictionary = {}
   # So that's why I insist so much on the english version: it gives you the big picture (but each step is not necessarily easy to implement!), and _then_: you can try and solve each step by coding. But I do both at the same time, it's too overwhelming.
 
 
-  
-from collections import OrderedDict
-# importing an ordered dictionary from the python library. 
-string = "computer science is the study of computers and computational systems"
-
-dictionary = {}
-
-for i in set(string):
-  dictionary[i] = string.count(i)
-
-list_frequencies = sorted([(i,string.count(i)) for i in set(string)], key=lambda couple: couple[1], reverse=True)
-# Anonymous function (lambda): A function which takes the second element of the function and sort it according to the second element. 
-# couple is the brackets list (character, frequency)
-print(list_frequencies)
-
-frequencies_dict = OrderedDict(list_frequencies)
-
-
-
-trees_dict = {}
-
-def merge_tuples(tuple1, tuple2):
-  x,y = tuple1, tuple2
-  tuple1, tuple2 = frequencies_dict.popitem(), frequencies_dict.popitem()
-  t_label, t_frequency = merge_tuples(x,y)
-  return (tuple1[0]+tuple2[0], tuple1[1]+tuple2[1])
 
 
 def merge_trees(tree1, tree2):
@@ -155,7 +127,32 @@ L = [i**2 for i in range(5) if i%2 ==1]
 def count(string, char):
   return len([c for c in string if c==char])
 
+# Huffman algorithm
+from collections import OrderedDict
+# importing an ordered dictionary from the python library. 
+string = "computer science is the study of computers and computational systems"
 
+dictionary = {}
+
+for i in set(string):
+  dictionary[i] = string.count(i)
+
+list_frequencies = sorted([(i,string.count(i)) for i in set(string)], key=lambda couple: couple[1], reverse=True)
+# Anonymous function (lambda): A function which takes the second element of the function and sort it according to the second element. 
+# couple is the brackets list (character, frequency)
+print(list_frequencies)
+
+frequencies_dict = OrderedDict(list_frequencies)
+
+trees_dict = {}
+#this is an unfinished function
+def merge_tuples(tuple1, tuple2):
+  x,y = tuple1, tuple2
+  tuple1, tuple2 = frequencies_dict.popitem(), frequencies_dict.popitem()
+  t_label, t_frequency = merge_tuples(x,y)
+  return (tuple1[0]+tuple2[0], tuple1[1]+tuple2[1])
+
+# my baby step way of doing this
 frequencies_dict = OrderedDict(list_frequencies)
 t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
 print(" ")
