@@ -18,3 +18,8 @@ sorted_list[2] = 11
 sorted_list[3] = 10
 
 # thought question : what happens when the entire tree is merged already?
+>>> dict.pop(3,None)
+9
+>>> dict
+{0: 0, 1: 1, 2: 4, 4: 16, 5: 25}
+>>> 

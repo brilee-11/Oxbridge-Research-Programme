@@ -45,6 +45,22 @@ list_frequencies = sorted([(i,string.count(i)) for i in set(string)], key=lambda
 print(list_frequencies)
 
 frequencies_dict = OrderedDict(list_frequencies)
+
+# Baby steps :
+t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+print(" ")
+print(t1,t2)
+print(" ")
+merge = (t1[0]+t2[0] , t1[1]+t2[1])
+frequencies_dict[merge[0]] = merge[1]
+print(frequencies_dict)
+# This pops off the last 2 elements and merged them together, and added them back to the list
+# NEXT STEP : Reorder the list AGAIN!!
+frequencies_dict = OrderedDict(sorted(frequencies_dict.items(), reverse = True, key=lambda t:t[1]))
+print(" ")
+print(frequencies_dict)
+# This reorders the list together with the merged element
+# NEXT STEP : Pop off the last 2 element AGAIN
 ```
 
 ## Useful data stuctures
@@ -74,4 +90,4 @@ A dictionary is EXACTLY the data structure that enables us to do that! (In a way
 
 ## I/O in Python
 
-## Databases
+

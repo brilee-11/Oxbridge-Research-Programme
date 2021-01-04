@@ -127,9 +127,6 @@ L = [i**2 for i in range(5) if i%2 ==1]
 def count(string, char):
   return len([c for c in string if c==char])
 
-# Huffman algorithm
-from collections import OrderedDict
-# importing an ordered dictionary from the python library. 
 string = "computer science is the study of computers and computational systems"
 
 dictionary = {}
@@ -137,21 +134,81 @@ dictionary = {}
 for i in set(string):
   dictionary[i] = string.count(i)
 
-list_frequencies = sorted([(i,string.count(i)) for i in set(string)], key=lambda couple: couple[1], reverse=True)
+################################
+# STARTING 
+################################
+
+# Huffman algorithm
+from collections import OrderedDict
+# importing an ordered dictionary from the python library. 
+string = "computer science is the study of computers and computational systems"
+
 # Anonymous function (lambda): A function which takes the second element of the function and sort it according to the second element. 
 # couple is the brackets list (character, frequency)
-print(list_frequencies)
 
-frequencies_dict = OrderedDict(list_frequencies)
+def get_encoding(tree, character):
+  '''
+  Return the Huffman encoding of a character based on a Huffman tree  
+  '''
+  return None
 
-trees_dict = {}
-#this is an unfinished function
-def merge_tuples(tuple1, tuple2):
-  x,y = tuple1, tuple2
-  tuple1, tuple2 = frequencies_dict.popitem(), frequencies_dict.popitem()
-  t_label, t_frequency = merge_tuples(x,y)
-  return (tuple1[0]+tuple2[0], tuple1[1]+tuple2[1])
 
+def Huffman(string="computer science is the study of computers and computational systems"):
+  frequencies_dict = OrderedDict(sorted([(i, string.count(i)) for i in set(string)], key=lambda couple: couple[1], reverse=True))
+
+  # trees_dict = {'a': ["a"],  'c': ["c"]}
+  trees_dict = {i:[i] for i in set(string)}
+
+  # In frequencies_dict:
+  # "ac" ↦ freq_a + freq_c   # (key/label ↦ value)
+
+  # In trees_dict? 
+  # "ac" ↦ ["ac", ["a"], ["c"]]
+    
+  def merge_frequencies(tuple1, tuple2):
+    # Way to use it:
+    # t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
+    # merge_frequencies(t1, t2)
+    return (tuple1[0]+tuple2[0], tuple1[1]+tuple2[1])
+
+  # label = name of the root of the tree
+  # function merge_trees takes labels as arguments
+  def merge_trees(new_label, tree1, tree2):
+    return [new_label, tree1, tree2]
+
+
+  while len(frequencies_dict) > 1:
+    # tuple1 looks like ("abc", freq_abc)
+    tuple1, tuple2 = frequencies_dict.popitem(), frequencies_dict.popitem()
+    label1, freq1 = tuple1
+    label2, freq2 = tuple2
+
+    # Merge frequencies
+    new_label, new_freq = merge_frequencies(tuple1, tuple2)
+    frequencies_dict[new_label] = new_freq
+
+    list_frequencies_sorted = sorted(frequencies_dict.items(), key=lambda couple: couple[1], reverse=True)
+
+    frequencies_dict = OrderedDict(list_frequencies_sorted)
+    
+    # Merge trees
+    tree1 = trees_dict.pop(label1, None)
+    tree2 = trees_dict.pop(label2, None)
+    # This is to retrieve the value but getting rid of the key
+    
+    merge_trees(new_label, tree1, tree2)
+        
+    # del dict["key"] OR dict.pop("key", None)
+    # tree1, tree2 = trees_dict["abc"], trees_dict["def"]
+    
+  # Get the whole Huffman tree
+
+  return None
+
+    
+
+
+'''
 # my baby step way of doing this
 frequencies_dict = OrderedDict(list_frequencies)
 t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
@@ -297,6 +354,6 @@ merge = (t1[0]+t2[0] , t1[1]+t2[1])
 frequencies_dict[merge[0]] = merge[1]
 print(frequencies_dict)
 # The one above is the last one
-
+'''
 
 
