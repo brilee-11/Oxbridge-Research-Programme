@@ -95,7 +95,7 @@ data = dictionary
 # AND reorder the frequencies_dict
 
 #trial 2 : Doesn't work !!
-string = "computer science is the study of computers and computational systems"
+string = "Computer Science is the study of computers and computational systems. ... Although knowing how to program is essential to the study of computer science, it is only one element of the field. Computer scientists design and analyze algorithms to solve programs and study the performance of computer hardware and software."
 dictionary = {}
 #my trial:
 for i in string:
@@ -113,7 +113,7 @@ print(str(sorted_list))
 
 
 from collections import OrderedDict
-string = "computer science is the study of computers and computational systems"
+string = "Computer Science is the study of computers and computational systems. ... Although knowing how to program is essential to the study of computer science, it is only one element of the field. Computer scientists design and analyze algorithms to solve programs and study the performance of computer hardware and software."
 
 dictionary = {}
 
@@ -123,7 +123,7 @@ for i in set(string):
 list_frequencies = sorted([(i,string.count(i)) for i in set(string)], key=lambda couple: couple[1], reverse=True)
 frequencies_dict = OrderedDict(list_frequencies)
 
-'''
+
 # my baby step way of doing this
 frequencies_dict = OrderedDict(list_frequencies)
 t1, t2 = frequencies_dict.popitem(),frequencies_dict.popitem()
@@ -269,6 +269,6 @@ merge = (t1[0]+t2[0] , t1[1]+t2[1])
 frequencies_dict[merge[0]] = merge[1]
 print(frequencies_dict)
 # The one above is the last one
-'''
+
 
 
