@@ -105,6 +105,7 @@ huffman_dict = Huffman(user_string)
 
 print(''.join([huffman_dict[i] for i in user_string]))
 # getting the encoding for the character in the user string using the huffman dictionary.
+# ''.join means that we are joining all of the encoding together and it is seprated by nothing. 
 
 
 '''
