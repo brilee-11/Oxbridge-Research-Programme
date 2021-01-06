@@ -47,7 +47,7 @@ Third Sorting:
 ##### *** At last, we can see that the elemnts are sorted properly. But the sorting algortihm will need to run once more, to make sure and prove that there aren't any elements our of place. *** #####
 ### Merge Sort
 
-### Comparison
+### Comparison of both sorting algortihms
 
 
 ## Huffman coding
