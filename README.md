@@ -60,8 +60,6 @@ Third Sorting:
 
 ↠↠ Another main difference is that the BUBBLE sort is an ITERATIVE procedure, and the MERGE sort is a RECURSIVE procedure. 
 
-
-
 ## Huffman coding
 ##### *** IDEA : ***
 The more frequent a character is, the shorter its Huffman encoding, because it's going to appear more times
@@ -90,7 +88,6 @@ The aim is to be able to take a string provided by the user and compress the pro
 
 
 ##### *** Implementation : ***
-
 ```python
 
 ######################################
@@ -99,8 +96,6 @@ The aim is to be able to take a string provided by the user and compress the pro
 
 from collections import OrderedDict
 # importing an ordered dictionary from the python library. 
-
-
 
 def Huffman(string):
   # Keys are mapped to Values
