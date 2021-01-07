@@ -55,15 +55,12 @@ Third Sorting:
 
 ### Comparison of both sorting algortihms
 ↠↠ The main comparison between the merge sort and the bubble sort, is that once the data or the input file gets larger,the time needed for bubble sort to fully work increases as well. 
-↠↠ This means that bubble sort is less efficient in terms of the time consumed to sort a large file, compared to the merge sort. The bubble sort has a linear time in terms of sorting.
-↠↠ Another main difference is that the BUBBLE sort is an ITERATIVE procedure, and the MERGE sort is a RECURSIVE procedure. 
-=======
-↠↠ The merge sort divides the input into 2 and splits itself to tackle each algortihm. This cycle is continuous until the result only has 2 elelments of the inpts together. The "sort" part of this algortihm is where it rearranges the last 2 merged elements to its right condition. After this, it is going to rebuild the input, by merging with other merged elements. 
 
-### Comparison of both sorting algortihms
-The main comparison between the merge sort and the bubble sort, is that once the data or the input file gets larger,the time needed for bubble sort to fully work increases as well. 
-This means that bubble sort is less efficient in terms of the time consumed to sort a large file, compared to the merge sort. The bubble sort has a linear time in sorting.
->>>>>>> origin/master
+↠↠ This means that bubble sort is less efficient in terms of the time consumed to sort a large file, compared to the merge sort. The bubble sort has a linear time in terms of sorting.
+
+↠↠ Another main difference is that the BUBBLE sort is an ITERATIVE procedure, and the MERGE sort is a RECURSIVE procedure. 
+
+
 
 ## Huffman coding
 ##### *** IDEA : ***
