@@ -71,19 +71,11 @@ The aim is to be able to take a string provided by the user and compress the pro
 1. Take the `string` provided by the user and treat it as an input value. 
 2. Calculate the frequency of each character in the `string`, and store it in a dictionary.
 3. Sort the dictionary() according to its second element (the frequency) in descending order. 
-<<<<<<< HEAD
 4. Create another dictionary for the trees, where the frequency isn't represented visually (the frequency information will be obtained from the original dictionary)
 5. Create a function to merge the frequencies(value) and the character (to form a string), ONLY OF THE LAST 2 ELEMENTS (least frequent elements), and add them back to the dictionary. 
 6. Sort the dictionary once again with the newly merged string(key) and frequency(value). 
 7. Create another function to merge the trees based on the information obtained in the function merging the frequencies.
 8. Create a `while` loop, where if there is more than one string and value (couple), the process of merging the frequencies (the function), will continue. This will be continuous until there is only 1 couple left in the dictionary.
-=======
-4. Create another dicitonary for the trees, where the frequency isn't represented visually (the frequency information will be obtained from the original dictionary)
-5. Create a function to merge the frequencies(value) and the character (to form a string), ONLY OF THE LAST 2 ELEMENTS (least frequent elements), and add them back to the dicitonary. 
-6. Sort the dicitonary once again with the newly merged string(key) and frequency(value). 
-7. Create another function to merge the trees beased on the information obtained in the function merging the frequencies.
-8. Create a `while` loop, where if there is more than one string and value (couple), the process of merging the frequencies (the funtion), will continue. This will be continuous until there is only 1 couple left in the dicitonary.
->>>>>>> origin/master
 9. Inside the while loop, we would also need to pop off keys in the dictionary containing the final trees. Popping off the keys(the merged string, NOT ALL AT ONCE), would allow us to see the value of each individual character. This would help the overall Huffman  `function` to use this information(the frequency from the popped keys) to form the Huffman tree. 
 10. Then, we can assign the arguments in the function to merge the trees, according to the root of the tree, the left child, and the right child. 
 11. After this, we need to write what would happen once the while loop ends. Essentially, when there is only 1 key left in the trees dictionary. 
@@ -96,11 +88,9 @@ The aim is to be able to take a string provided by the user and compress the pro
 17. (Since the aim is to get the user's string and compress it) Create a variable which asks the user for their text file, apply the overall function (Huffman) to it, and use it to make a new dictionary.
 18.  Print a list comprehension that says, for every character in the string provided by the user, find it in the latest dictionary containing the encodings for the characters in the string provided, and print it. 
 
-<<<<<<< HEAD
+
 ##### *** Implementation : ***
-=======
-##### *** Implementation (example) : ***
->>>>>>> origin/master
+
 ```python
 
 ######################################
