@@ -1,4 +1,4 @@
-# Immerse Education Project(testing) 
+# Immerse Education Project 
 
 ## Goal of the project
 
