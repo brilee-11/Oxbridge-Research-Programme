@@ -1,34 +1,45 @@
-# Immerse Education Project 
+# Immerse Education Project
+
+Website link: [https://brilee-11.github.io/Oxbridge-Research-Programme/](https://brilee-11.github.io/Oxbridge-Research-Programme/)
 
 ## Goal of the project
 
-The goal is to write a little Python package of file compression, providing two functions: `Huffman_encode(input_file)` and `Huffman_decode(encoded_file)`. 
+The goal is to write a little Python package of file compression, providing two functions: `Huffman_encode(input_file)` and `Huffman_decode(encoded_file)`.
 
-The user will provide a local text file that they want to compress/uncompress. 
-We could even store the compressed files in a SQLite database, in a more advanced version (to get some training with databases). 
+The user will provide a local text file that they want to compress/uncompress.
+In a more advanced future version (to get some training with databases), we could even store the compressed files in a SQLite database.
 
 
 ## Sorting algorithms
-* Sorting algortihms arranges pieces of data in a certain order. 
-* By sorting a certain list, it would be easier to process the information provided by the user.
-* In our case, the list would definitely need to be sorted, because the Huffman theory is that a continuous repetition of the 2 least frequent characters in the string are merged together, so that it would end up with only one string and a frequency. This will be at the root of the tree. 
-* It is also possible to give conditions while sorting the list 
+
+* Sorting algortihms arrange pieces of data in a certain order.
+* Sorting lists sometimes makes it easier to process the information provided by the user.
+* In our case, the list of frequencies would benefit from getting sorted, because in the Huffman algorithm, the 2 least frequent character trees (partial Huffman trees) in the string are merged together (and the algorithm terminates when the list of frequencies has only one element). The corresponding string will be the root of the final partial Huffman tree.
+* It is also possible to give conditions when sorting the list:
   ***i.e. ascending or descending order, sorting alphabetically, etc.***
 
-~ It is IMPOSSIBLE to sort a dictionary, because in a dictionary, the order doesn't matter. 
+~ It is IMPOSSIBLE to sort a dictionary, because in a dictionary, the order does not matter. 
+
 ### Bubble Sort
-↠↠ Continously swapping with the element to the right if they are in the wrong place. this can vary based on the rule (the condition), where it is sorting in ascending or descending order, etc. 
-##### *** EXAMPLE : ***
-This is the first "analysis" and sorting of the numbers give. This example will be sorted in ASCENDING ORDER
+
+↠↠ Continuously swapping the pairs of elements that are in the wrong order. This can vary based on the rule (the condition), whether it be sorting in ascending or descending order, etc.
+
+##### ***EXAMPLE:***
+
+This is the execution trace of the first pass of the algorithm. This example will be sorted in ASCENDING ORDER:
+
 ```
 First Sorting:
 ( 5 1 4 2 8 ) –>  (1 5 4 2 8 ) Swap 1 & 5, because 5 > 1
 ( 1 5 4 2 8 ) –>  ( 1 4 5 2 8 ) Swap 5 & 4, because 5 > 4
 ( 1 4 5 2 8 ) –>  ( 1 4 2 5 8 ) Swap 5 & 2, because 5 > 2
-( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ) The final 2 elements , 5 and 8 are in order where 5 is before 8. 
+( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ) The final 2 elements, 5 and 8 are in order because 5 is before 8. 
 Thus the bubble sort won't swap them anymore.
 ```
-##### *** However, these number still aren't in the right ascending order. Therefore, we would need to sort them AGAIN. *** #####
+
+##### ***
+However, these numbers are still not in the right ascending order. Therefore, we need a second pass.*** #####
+
 ```
 Second Sorting:
 ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 )
@@ -36,7 +47,8 @@ Second Sorting:
 ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )
 ( 1 2 4 5 8 ) –>  ( 1 2 4 5 8 )
 ```
-##### *** At last, we can see that the elemnts are sorted properly. But the sorting algortihm will need to run once more, to make sure and prove that there aren't any elements our of place. *** #####
+
+##### ***At last, we can see that the elements are sorted properly. But the sorting algorithm will need to run one more pass, to make sure that there are no out-of-place elements left.*** #####
 
 ```
 Third Sorting:
@@ -45,49 +57,58 @@ Third Sorting:
 ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) ✅
 ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) ✅
 ```
-##### *** At last, we can see that the elemnts are sorted properly. But the sorting algortihm will need to run once more, to make sure and prove that there aren't any elements our of place. *** #####
 
 ### Merge Sort
-↠↠ This sorting algorithm takes the theory of DIVIDE AND CONQUER. 
 
-↠↠ The merge sort divides the input into 2 and splits itself to tackle each algortihm. This cycle is continuous until the result only has 2 elelments of the inputs together. The "sort" part of this algortihm is where it rearranges the last 2 merged elements to its right condition. After this, it is going to rebuild the input, by merging with other merged elements. 
+↠↠ This sorting algorithm applies the DIVIDE AND CONQUER paradigm. 
+
+↠↠ The merge sort divides the input into 2 and splits itself to tackle each part recursively. This cycle continues until the recursive call only has 2 input elements to sort (a single comparison then suffices). The "sorting" part of this algorithm is when it combines the sorted lists yielded by the recursive calls. It builds the combined list (merging the two recursively sorted lists) by element-wise comparisons.
+
 ![Merge sort example](https://lh3.googleusercontent.com/-TOZuIu1mYzo/X_bdMHbk8xI/AAAAAAAAKf0/A1igakPk4GsW2DB5IbTiGCI19g3KhvBdACK8BGAsYHg/s0/2021-01-07.jpg)
 
 ### Comparison of both sorting algortihms
-↠↠ The main comparison between the merge sort and the bubble sort, is that once the data or the input file gets larger,the time needed for bubble sort to fully work increases as well. 
 
-↠↠ This means that bubble sort is less efficient in terms of the time consumed to sort a large file, compared to the merge sort. The bubble sort has a linear time in terms of sorting.
+↠↠ The main comparison between the merge sort and the bubble sort, is that once the data or the input file gets larger,the time needed for bubble sort to fully work increases faster than that of the merge sort.
 
-↠↠ Another main difference is that the BUBBLE sort is an ITERATIVE procedure, and the MERGE sort is a RECURSIVE procedure. 
+↠↠ This means that bubble sort is less efficient when it comes to the time required to sort a large list, compared to the merge sort. The bubble sort has a quadratic time complexity, whereas the merge sort runs in quasilinear time.
+
+↠↠ Another main difference is that the BUBBLE sort is an ITERATIVE procedure, and the MERGE sort is a RECURSIVE (it calls itself on smaller inputs) procedure.
 
 ## Huffman coding
+
 ##### *** IDEA : ***
-The more frequent a character is, the shorter its Huffman encoding, because it's going to appear more times
+
+The more frequent a character is, the shorter its Huffman encoding, because it is going to appear more times in the resulting encoded string.
+
 ##### *** AIM : ***
-The aim is to be able to take a string provided by the user and compress the provided string. 
+
+The aim is to be able to take a string provided by the user and compress it.
+
 ##### *** Steps on how to do it (in English): ***
-1. Take the `string` provided by the user and treat it as an input value. 
-2. Calculate the frequency of each character in the `string`, and store it in a dictionary.
-3. Sort the dictionary() according to its second element (the frequency) in descending order. 
-4. Create another dictionary for the trees, where the frequency isn't represented visually (the frequency information will be obtained from the original dictionary)
-5. Create a function to merge the frequencies(value) and the character (to form a string), ONLY OF THE LAST 2 ELEMENTS (least frequent elements), and add them back to the dictionary. 
-6. Sort the dictionary once again with the newly merged string(key) and frequency(value). 
+
+1. Take the `string` provided by the user and treat it as an input value.
+2. Calculate the frequency (number of occurrences) of each character in the `string`, and store it in a dictionary.
+3. Sort the dictionary with respect to the frequencies in descending order.
+4. Create another dictionary for the (partial Huffman) trees, where the frequency is not represented (the frequency information will be obtained from the first dictionary)
+5. Create a function to merge the frequencies (values) and characters (to form a string), and apply it to THE LAST 2 ELEMENTS (ie. the least frequent elements), and add them back to the frequencies dictionary.
+6. Sort the dictionary once again with the newly merged string (key) and frequency (value).
 7. Create another function to merge the trees based on the information obtained in the function merging the frequencies.
-8. Create a `while` loop, where if there is more than one string and value (couple), the process of merging the frequencies (the function), will continue. This will be continuous until there is only 1 couple left in the dictionary.
-9. Inside the while loop, we would also need to pop off keys in the dictionary containing the final trees. Popping off the keys(the merged string, NOT ALL AT ONCE), would allow us to see the value of each individual character. This would help the overall Huffman  `function` to use this information(the frequency from the popped keys) to form the Huffman tree. 
-10. Then, we can assign the arguments in the function to merge the trees, according to the root of the tree, the left child, and the right child. 
-11. After this, we need to write what would happen once the while loop ends. Essentially, when there is only 1 key left in the trees dictionary. 
-12. Create a new `dictionary` that will hold the encodings of each character (key) in the string or in the trees dictionary.
-13. Create a function where if the tree constructed has reached a leaf (only one key), we need to update the encoding dictionary. 
-14. But if there is more than one key, then create an else statement where the divide and conquer algorithm will take place ; assigning the left tree with the encoding "0" and the right tree with the encoding "1"
-(This else statement is basically keeping track of each character's encoding. Once it reaches another internal node, it will add the last tracked encoding and adding either a "1" or a "0" depending on its location. )
-15. In this function we would then need to return the last remaining label in the trees dictionary.
-16. In the overall Huffman function, the encoding dictionary will be the one needed to be returned, because the information that we want is the ENCODING OF ALL OF THE CHARACTERS IN THE INITIAL STRING.
-17. (Since the aim is to get the user's string and compress it) Create a variable which asks the user for their text file, apply the overall function (Huffman) to it, and use it to make a new dictionary.
-18.  Print a list comprehension that says, for every character in the string provided by the user, find it in the latest dictionary containing the encodings for the characters in the string provided, and print it. 
+8. Create a `while` loop such that the process of merging the frequencies and trees continues as long as there is more than one string and value (couple) in the frequencies dictionary. This continues until the exit condition is satisfied, that is, there is only 1 couple left in the frequencies dictionary.
+9. In the body of the while loop, we would also need to pop off keys of the dictionary containing the partial Huffman trees. Popping off the keys (the merged string, NOT ALL AT ONCE), would allow us to see the value of each individual character. This would help the overall `Huffman` function to use this information (the frequency of the popped keys) to form the final Huffman tree.
+10. Then, we can call the function to merge the trees, giving it as arguments the root of the tree, the left child, and the right child.
+11. After this, we need to write what happens once the while loop ends, that is, when there is only 1 key left in the trees dictionary.
+12. Create a new encoding dictionary that will hold the encodings of each character (key) of the user string.
+13. Create a function populating the encoding dictionary: it updates the encoding dictionary as soon as it reaches a leaf (only one key) of the final Huffman tree.
+14. But if there is more than one key, then create an `else` statement and apply the divide and conquer paradigm; assigning the left tree with the encoding prefix "0" and the right tree with the encoding prefix "1"
+(This else statement basically enables us to keep track of each character's encoding. Once it reaches another internal node, it will add the last tracked encoding and append either a "1" or a "0" depending on its location.)
+1.  In this function is then applied to the tree associated to the last remaining label in the trees dictionary (ie. the final Huffman tree).
+2.  In the overall `Huffman` function, the encoding dictionary is the one returned, because the information that we want is the ENCODING OF ALL OF THE CHARACTERS IN THE INITIAL STRING.
+3.  (Since the aim is to get the user's string and compress it) Create a variable which asks the user for their string and apply the overall `Huffman` function to get a new encoding dictionary.
+4.  Construct a list comprehension that ranges over every character in the string provided by the user, find it in the latest dictionary containing the encodings, and print it.
 
 
-##### *** Implementation : ***
+##### *** Python implementation : ***
+
 ```python
 
 ######################################
@@ -208,33 +229,40 @@ A dictionary is a data structure (a bit like a list or an array) where you can a
 ```python
 my_array = ["value 1", "value 2"]
 ```
-↠↠ my_array[0] is "value 1", and my_array[1] is "value 2": 
 
-↠↠ ie. the key 0 is associated to the value "value 1" (written 0 ⟼ "value 1"), and the key 1 is associated to "value 2" (written 1 ⟼ "value 2")
+↠↠ `my_array[0]` is `"value 1"`, and `my_array[1]` is `"value 2"`: 
+
+↠↠ ie. the key `0` is associated to the value `"value 1"` (written `0` ⟼ `"value 1"`), and the key `1` is associated to `"value 2"` (written `1` ⟼ `"value 2"`)
 
 #### *** How to use it? *** ####
- ```python
- my_dict = {} 
- ```
- Empty dictionary: no keys, no values
- But, you can add a new "key" ⟼ "value" pairing (a value can be anything, but a key can only _immutable_ (we'll talk about it next time: that is, something that has a certain value and can't be modified): for ex: a string, a number, a tuple, etc BUT NOT a list,an array, etc (because these can be modified):
+
+Create an empty dictionary (no keys, no values):
+
+```python
+my_dict = {} 
+```
+
+But, you can add a new `key` ⟼ `value` pairing (a value can be anything, but a key can only be _immutable_ (that is, something that has a certain value and cannot be modified), for example: a string, a number, a tuple, etc BUT NOT a list,an array, etc (because these can be modified)).
 
 #### *** In our case... *** ####
-↠↠ We would like our keys to be the characters of our input_string, and not just integers. 
 
-↠↠ For example, we'd like to associate to the key "H" (the encoded character) the value "101" (the corresponding Huffman code): "H" ⟼ "101"
-A dictionary is EXACTLY the data structure that enables us to do that! (In a way, it's a function, where the domain is finite: to each key, you associate a value, but you have a finite number of keys)
+↠↠ We would like our keys to be the characters of our `input_string`, and not just integers. 
+
+↠↠ For example, we would like to associate to the key `"H"` (the encoded character) the value `"101"` (the corresponding Huffman code): `"H"` ⟼ `"101"`
+
+A dictionary is EXACTLY the data structure that enables us to do that (In a way, it is a function, where the domain is finite: to each key, you associate a value, but you have a finite number of keys).
 
 ### Binary heaps
+
 * A heap is a *** COMPLETE BINARY TREE ***
-* In binary heaps, there are 2 types of heaps :
+* There are 2 types of binary heaps :
 1. Min heap
 2. Max heap
 
 #### *** Minimum Binary Heap *** ####
-In a min heap, the root of the tree (the most top) is the MINIMUM number/frequency of character appearance amongst the other elements. 
+
+In a min heap, every parent (internal node) is smaller than its children. Therefore, the root of the tree (the top-most node) is associated to the MINIMUM value. In our case, it is the minimum number/frequency of character occurrences in the user string. 
+
 #### *** Maximum Binary Heap *** ####
-In a max heap, the internal nodes are always either greater than or is equal to the values of the children of the said internal node.
 
-
-
+Similarly, in a max heap, the internal nodes are always either greater than or is equal to the values of the children of the said internal node.
